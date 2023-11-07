@@ -29,6 +29,7 @@ project {
 
     buildType(Build2)
     buildType(Build1)
+     buildType(Build3)
 
     subProject(Project2)
 }
@@ -44,9 +45,7 @@ object Build1 : BuildType({
         script {
             id = "simpleRunner"
             scriptContent = "echo %build.counter%.%system.teamcity.buildConfName%.1txt"
-            param("org.jfrog.artifactory.selectedDeployableServer.downloadSpecSource", "Job configuration")
-            param("org.jfrog.artifactory.selectedDeployableServer.useSpecs", "false")
-            param("org.jfrog.artifactory.selectedDeployableServer.uploadSpecSource", "Job configuration")
+
         }
     }
 
@@ -68,13 +67,27 @@ object Build2 : BuildType({
         script {
             id = "simpleRunner"
             scriptContent = "echo %build.counter%.%system.teamcity.buildConfName%.1txt"
-            param("org.jfrog.artifactory.selectedDeployableServer.downloadSpecSource", "Job configuration")
-            param("org.jfrog.artifactory.selectedDeployableServer.useSpecs", "false")
-            param("org.jfrog.artifactory.selectedDeployableServer.uploadSpecSource", "Job configuration")
+
         }
     }
 })
 
+
+object Build3 : BuildType({
+    name = "build3"
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    steps {
+        script {
+            id = "simpleRunner"
+            scriptContent = "echo %build.counter%.%system.teamcity.buildConfName%.1txt"
+
+        }
+    }
+})
 
 object Project2 : Project({
     name = "project2"
