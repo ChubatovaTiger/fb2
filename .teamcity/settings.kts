@@ -44,7 +44,7 @@ object Build1 : BuildType({
     steps {
         script {
             id = "simpleRunner"
-            scriptContent = "echo %build.counter%.%system.teamcity.buildConfName%.1txt"
+            scriptContent = "echo a%build.counter%.%system.teamcity.buildConfName%.1txt"
 
         }
     }
@@ -57,7 +57,7 @@ object Build1 : BuildType({
 })
 
 object Build2 : BuildType({
-    name = "build2"
+    name = "build2new"
 
     vcs {
         root(DslContext.settingsRoot)
