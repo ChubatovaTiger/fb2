@@ -29,6 +29,8 @@ project {
 
     buildType(Build2)
     buildType(Build1)
+
+    subProject(Project2)
 }
 
 object Build1 : BuildType({
@@ -71,4 +73,9 @@ object Build2 : BuildType({
             param("org.jfrog.artifactory.selectedDeployableServer.uploadSpecSource", "Job configuration")
         }
     }
+})
+
+
+object Project2 : Project({
+    name = "project2"
 })
